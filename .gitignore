@@ -1,0 +1,45 @@
+# Dependency directories
+.yarn
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+/node_modules
+/studio/node_modules
+
+# Build directories
+/.next/
+/out/
+/build
+/studio/dist
+
+# Local environment files
+.env
+.env*.local
+studio/.env.development
+
+# Editor directories and files
+.vscode
+.idea
+*.iml
+
+# OS generated files
+.DS_Store
+
+# Security
+*.pem
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.tsbuildinfo
+
+# Testing
+/coverage
+
+# Vercel
+.vercel
