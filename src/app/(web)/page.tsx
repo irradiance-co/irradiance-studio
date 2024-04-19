@@ -1,6 +1,7 @@
 import { GradientLogo } from '@/components/gradient-logo';
 import clsx from 'clsx';
 import { Welcome } from '@/components/welcome';
+import { Waitlist } from '@/components/ui/tray/waitlist';
 
 export default async function Home() {
   return (
@@ -14,6 +15,8 @@ export default async function Home() {
       )}>
       <div className='z-50 flex flex-col items-center space-y-4'>
         <GradientLogo className='mx-auto w-full max-w-[120px]' />
+
+        <Waitlist />
       </div>
     </section>
   );
