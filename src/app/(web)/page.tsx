@@ -1,14 +1,11 @@
-
+import { Welcome } from '@/components/welcome';
 
 export default async function Home() {
-
-
   return (
-    <main className="max-w-7xl mx-auto lg:px-16 px-6">
-      <section className="flex xl:flex-row flex-col xl:items-center items-start xl:justify-center justify-between gap-x-12 lg:mt-32 mt-20 mb-16">
-
+    <main className='mx-auto max-w-7xl px-6 lg:px-16'>
+      <section className='mb-16 mt-20 flex flex-col items-start justify-between gap-x-12 lg:mt-32 xl:flex-row xl:items-center xl:justify-center'>
+        <Welcome />
       </section>
-
     </main>
   );
 }
