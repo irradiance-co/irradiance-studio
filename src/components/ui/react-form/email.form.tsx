@@ -4,46 +4,38 @@ import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  FormPrimitive, // Import the newly defined FormPrimitive
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from './form'; // Adjust the import paths based on your project structure
+import { FormField, FormItem, FormControl, FormMessage } from './form';
 import { InputField } from '../input/input';
+import subscribeAction from '@/app/actions/subscribe';
 
-// Zod schema for just the email field
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
 });
 
-type FormData = z.infer<typeof formSchema>;
-
 export function EmailForm() {
-  const methods = useForm<FormData>({
+  const methods = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: { email: '' },
   });
 
-  const { handleSubmit, register } = methods;
-
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = methods.handleSubmit((data) => {
     console.log('Email submitted:', data.email);
   });
 
   return (
     <FormProvider {...methods}>
-      <FormPrimitive onSubmit={onSubmit}>
+      <FormPrimitive
+        action={(formData: FormData) =>
+          subscribeAction({ email: formData.get('email') as string })
+        }
+        onSubmit={onSubmit}>
         <FormItem>
-          {/* <FormLabel htmlFor='email'>Email:</FormLabel> */}
           <FormField
             name='email'
             render={({ field }) => (
               <FormControl {...field}>
                 <InputField
-                  {...register('email')}
+                  {...methods.register('email')}
                   placeholder='Enter your email'
                 />
               </FormControl>
@@ -60,3 +52,18 @@ export function EmailForm() {
     </FormProvider>
   );
 }
+
+// Create a simple Form component that can handle submissions
+const FormPrimitive: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({
+  children,
+  onSubmit,
+  ...props
+}) => {
+  return (
+    <form
+      onSubmit={onSubmit}
+      {...props}>
+      {children}
+    </form>
+  );
+};

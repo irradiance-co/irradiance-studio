@@ -15,21 +15,6 @@ import { Label } from './label';
 
 const Form = FormProvider;
 
-// Create a simple Form component that can handle submissions
-const FormPrimitive: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({
-  children,
-  onSubmit,
-  ...props
-}) => {
-  return (
-    <form
-      onSubmit={onSubmit}
-      {...props}>
-      {children}
-    </form>
-  );
-};
-
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
@@ -186,7 +171,6 @@ FormMessage.displayName = 'FormMessage';
 export {
   useFormField,
   Form,
-  FormPrimitive,
   FormItem,
   FormLabel,
   FormControl,
