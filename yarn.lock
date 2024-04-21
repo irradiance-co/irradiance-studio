@@ -2127,6 +2127,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hookform/resolvers@npm:^3.3.4":
+  version: 3.3.4
+  resolution: "@hookform/resolvers@npm:3.3.4"
+  peerDependencies:
+    react-hook-form: ^7.0.0
+  checksum: 7761e3340d23acd092dec4023344678e62b0c0ea0ed5aa3687cd315fc339b3b965e11124d643811292e6962683357423e6fe646fffabf9b96f8322f41903924d
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.12.3":
   version: 0.12.3
   resolution: "@humanwhocodes/config-array@npm:0.12.3"
@@ -2563,6 +2572,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-label@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "@radix-ui/react-label@npm:2.0.2"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/react-primitive": 1.0.3
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: fe3bd8902bc523fb5125fa96167a13b8a60d007413787eae9573e4b00b0edff0487c4c0620ea5dc37e6da13833ebc4f8d7e00b6c846f2a5686e7f173672b8dde
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-portal@npm:1.0.4":
   version: 1.0.4
   resolution: "@radix-ui/react-portal@npm:1.0.4"
@@ -2624,7 +2653,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-slot@npm:1.0.2":
+"@radix-ui/react-slot@npm:1.0.2, @radix-ui/react-slot@npm:^1.0.2":
   version: 1.0.2
   resolution: "@radix-ui/react-slot@npm:1.0.2"
   dependencies:
@@ -4106,6 +4135,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^1.4.0":
+  version: 1.6.8
+  resolution: "axios@npm:1.6.8"
+  dependencies:
+    follow-redirects: ^1.15.6
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: bf007fa4b207d102459300698620b3b0873503c6d47bf5a8f6e43c0c64c90035a4f698b55027ca1958f61ab43723df2781c38a99711848d232cad7accbcdfcdd
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^3.2.1":
   version: 3.2.1
   resolution: "axobject-query@npm:3.2.1"
@@ -4502,6 +4542,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-variance-authority@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "class-variance-authority@npm:0.7.0"
+  dependencies:
+    clsx: 2.0.0
+  checksum: e7fd1fab433ef06f52a1b7b241b70b4a185864deef199d3b0a2c3412f1cc179517288264c383f3b971a00d76811625fc8f7ffe709e6170219e88cd7368f08a20
+  languageName: node
+  linkType: hard
+
 "classnames@npm:^2.2.5":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
@@ -4565,6 +4614,13 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: d06418b7335897209e77bdd430d04f882189582e67bd1f75a04565f3f07f5b3f119a9d670c943b6697d0afb100f03b866b3b8a1f91d4d02d72c4ecf2bb64b5dd
+  languageName: node
+  linkType: hard
+
+"clsx@npm:2.0.0":
+  version: 2.0.0
+  resolution: "clsx@npm:2.0.0"
+  checksum: a2cfb2351b254611acf92faa0daf15220f4cd648bdf96ce369d729813b85336993871a4bf6978ddea2b81b5a130478339c20d9d0b5c6fc287e5147f0c059276e
   languageName: node
   linkType: hard
 
@@ -6966,6 +7022,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "irradiance-studio@workspace:."
   dependencies:
+    "@hookform/resolvers": ^3.3.4
+    "@radix-ui/react-label": ^2.0.2
+    "@radix-ui/react-slot": ^1.0.2
     "@sanity/assist": ^3.0.3
     "@sanity/client": ^6.15.17
     "@sanity/image-url": ^1.0.2
@@ -6976,9 +7035,11 @@ __metadata:
     "@types/react": ^18.2.79
     "@types/react-dom": ^18.2.25
     autoprefixer: ^10.4.19
+    class-variance-authority: ^0.7.0
     clsx: ^2.1.0
     eslint: ^9.0.0
     eslint-config-next: ^14.2.2
+    klaviyo-api: 8.0.0
     next: ^14.2.2
     next-sanity: ^9.0.6
     postcss: ^8.4.38
@@ -6986,6 +7047,7 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.5.14
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-hook-form: ^7.51.3
     sanity: ^3.38.0
     sass: ^1.75.0
     styled-components: ^6.1.8
@@ -6993,6 +7055,7 @@ __metadata:
     tailwindcss: ^3.4.3
     typescript: ^5.4.5
     vaul: ^0.9.0
+    zod: ^3.22.5
   languageName: unknown
   linkType: soft
 
@@ -7668,6 +7731,17 @@ __metadata:
   version: 6.0.3
   resolution: "kind-of@npm:6.0.3"
   checksum: 3ab01e7b1d440b22fe4c31f23d8d38b4d9b91d9f291df683476576493d5dfd2e03848a8b05813dd0c3f0e835bc63f433007ddeceb71f05cb25c45ae1b19c6d3b
+  languageName: node
+  linkType: hard
+
+"klaviyo-api@npm:8.0.0":
+  version: 8.0.0
+  resolution: "klaviyo-api@npm:8.0.0"
+  dependencies:
+    axios: ^1.4.0
+    exponential-backoff: ^3.1.1
+    form-data: ^4.0.0
+  checksum: 0b78133b14874c9f20b34b512f8b09831bfa96fd0def606f36596f6802ae4299981d48232564eaa48b648a4bce2fd09b31185cef21370e7555bdf0dbad34de64
   languageName: node
   linkType: hard
 
@@ -9224,6 +9298,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
+  languageName: node
+  linkType: hard
+
 "psl@npm:^1.1.33":
   version: 1.9.0
   resolution: "psl@npm:1.9.0"
@@ -9365,6 +9446,15 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 2d2e191e802ecc9dc5cf5ebf5a8e71bba3e93caccadfa3d08276e08dad97bee90afb819054393a455423757acb8e028f2d1251fd71a46554b95a97aa0f0c18bf
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.51.3":
+  version: 7.51.3
+  resolution: "react-hook-form@npm:7.51.3"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  checksum: 4ac71033b66ae0b7b9d75a1bc2053a6747fb37f68c6895ee85a72cabb890168d82990c8ca7bddd271e80fdbf58f471d14d6a0e0714400d017590d4f56b3d241f
   languageName: node
   linkType: hard
 
@@ -11795,7 +11885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^3.22.4":
+"zod@npm:^3.22.4, zod@npm:^3.22.5":
   version: 3.22.5
   resolution: "zod@npm:3.22.5"
   checksum: a7b47685ce53b62d2d895c07b1cc0277ef1eb258736ae2b4b526d0b4cbe94a1fb39a260882e2624af2d59af8533373c0a96d36d71c19e79c341057ea9f528561

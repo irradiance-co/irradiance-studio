@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Drawer,
   DrawerTrigger,
@@ -11,40 +11,25 @@ import {
   DrawerTitle,
   DrawerDescription,
 } from '../drawer/drawer';
-import { InputField } from '../input/input';
+import { EmailForm } from '../react-form/email.form';
 
 export const Waitlist = () => {
-  const [email, setEmail] = useState('');
-
-  const handleEmailChange = (newEmail: string) => {
-    setEmail(newEmail);
-  };
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log('Email submitted:', email);
-    // Here you would typically handle the submission, e.g., sending to an API.
-  };
-
   return (
     <Drawer>
       <DrawerTrigger>Sign up</DrawerTrigger>
-      <DrawerContent onSubmit={handleSubmit}>
+      <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Stay Updated!</DrawerTitle>
-          <DrawerDescription>
+          <DrawerTitle className='text-center'>Stay Updated!</DrawerTitle>
+          <DrawerDescription className='text-center'>
             Sign up to be notified of updates.
           </DrawerDescription>
         </DrawerHeader>
 
-        <InputField
-          value={email}
-          placeholder='Enter your email'
-          onChange={handleEmailChange}
-        />
+        {/* EmailForm now handles its own submission */}
+        <EmailForm />
 
         <DrawerFooter>
-          <button type='submit'>Submit</button>
+          {/* Submit button inside EmailForm should handle form submission */}
           <DrawerClose>
             <button type='button'>Cancel</button>
           </DrawerClose>

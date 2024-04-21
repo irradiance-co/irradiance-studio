@@ -1,29 +1,44 @@
+// InputField component with correct ref and prop handling.
 'use client';
 
-import React, { FC, ChangeEvent } from 'react';
+import React from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
-interface TextInputProps {
-  value: string;
+interface TextInputProps extends UseFormRegisterReturn {
   placeholder?: string;
-  onChange: (value: string) => void;
 }
 
-export const InputField: FC<TextInputProps> = ({
-  value,
-  placeholder,
-  onChange,
-}) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange(event.target.value);
-  };
+const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
+  ({ onBlur, onChange, name, ref, placeholder, ...rest }, forwardedRef) => {
+    return (
+      <input
+        type='email'
+        name={name}
+        ref={(instance) => {
+          if (forwardedRef) {
+            if (typeof forwardedRef === 'function') {
+              forwardedRef(instance);
+            } else {
+              forwardedRef.current = instance;
+            }
+          }
+          if (typeof ref === 'function') {
+            ref(instance);
+          } else if (ref) {
+            (ref as React.MutableRefObject<HTMLInputElement | null>).current =
+              instance;
+          }
+        }}
+        onChange={onChange}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        {...rest}
+        className='mx-auto block w-full max-w-sm items-center justify-center border-b border-radiance-400 bg-transparent p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+      />
+    );
+  },
+);
 
-  return (
-    <input
-      type='text'
-      value={value}
-      placeholder={placeholder}
-      onChange={handleChange}
-      className='mx-auto block w-full max-w-sm items-center justify-center border-b border-radiance-400 bg-transparent p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
-    />
-  );
-};
+InputField.displayName = 'InputField';
+
+export { InputField };
