@@ -10,10 +10,10 @@ import {
   DrawerFooter,
   DrawerTitle,
   DrawerDescription,
-} from '../drawer/drawer';
-import { EmailForm } from '../react-form/email.form';
+} from './drawer';
+import { KlaviyoSubscribe } from './react-form';
 
-export const Waitlist = () => {
+export const Subscribe = () => {
   return (
     <Drawer>
       <DrawerTrigger>Sign up</DrawerTrigger>
@@ -24,12 +24,8 @@ export const Waitlist = () => {
             Sign up to be notified of updates.
           </DrawerDescription>
         </DrawerHeader>
-
-        {/* EmailForm now handles its own submission */}
-        <EmailForm />
-
+        <KlaviyoSubscribe />
         <DrawerFooter>
-          {/* Submit button inside EmailForm should handle form submission */}
           <DrawerClose>Cancel</DrawerClose>
         </DrawerFooter>
       </DrawerContent>

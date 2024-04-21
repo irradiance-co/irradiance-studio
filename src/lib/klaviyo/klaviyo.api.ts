@@ -1,6 +1,3 @@
-// app/config/klaviyo.api.ts
-'use server';
-
 import { ApiKeySession, ProfilesApi } from 'klaviyo-api';
 
 const apiKey = process.env.KLAVIYO_API_KEY;

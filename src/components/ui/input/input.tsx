@@ -1,4 +1,3 @@
-// InputField component with correct ref and prop handling.
 'use client';
 
 import React from 'react';
@@ -33,7 +32,7 @@ const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
         onBlur={onBlur}
         placeholder={placeholder}
         {...rest}
-        className='mx-auto block w-full max-w-sm items-center justify-center border-b border-radiance-400 bg-transparent p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500'
+        className='mx-auto block w-full max-w-sm items-center justify-center border-b border-radiance-400 bg-transparent p-2.5 text-sm text-white focus:border-blue-500 focus:ring-blue-500'
       />
     );
   },

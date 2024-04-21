@@ -5,7 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import subscribeToKlaviyo from '@/app/actions/subscribe';
+import { subscribeToKlaviyo } from '@/app/actions/subscribe';
 
 import { FormField, FormItem, FormControl, FormMessage } from './form';
 import { InputField } from '../input';
@@ -14,7 +14,21 @@ const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
 });
 
-export function EmailForm() {
+const FormPrimitive: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({
+  children,
+  onSubmit,
+  ...props
+}) => {
+  return (
+    <form
+      onSubmit={onSubmit}
+      {...props}>
+      {children}
+    </form>
+  );
+};
+
+const KlaviyoSubscribe = () => {
   const methods = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: { email: '' },
@@ -59,19 +73,6 @@ export function EmailForm() {
       </FormPrimitive>
     </FormProvider>
   );
-}
-
-// Create a simple Form component that can handle submissions
-const FormPrimitive: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({
-  children,
-  onSubmit, // This prop is actually not necessary if you handle onSubmit via useForm
-  ...props
-}) => {
-  return (
-    <form
-      onSubmit={onSubmit}
-      {...props}>
-      {children}
-    </form>
-  );
 };
+
+export { KlaviyoSubscribe };

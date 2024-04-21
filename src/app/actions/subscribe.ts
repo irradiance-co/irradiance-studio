@@ -1,16 +1,18 @@
 // app/actions/subscribe.ts
 'use server';
 
-import profilesApi from '@/lib/klaviyo/api';
+import { profilesApi, formatConsentedAt } from '@/lib/klaviyo';
 import { ProfileCreateQuery, ProfileEnum } from 'klaviyo-api';
 
-const listId = 'Ri279A'; // Predefined list ID
+const LIST_ID = 'RGUBug'; // Predefined list ID
 
 interface SubscribeParams {
   email: string;
 }
 
 export async function subscribeToKlaviyo({ email }: SubscribeParams) {
+  console.log('Starting subscription process for:', email);
+
   let profile: ProfileCreateQuery = {
     data: {
       type: ProfileEnum.Profile,
@@ -21,6 +23,11 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
   };
 
   try {
+    /**
+     * The profile object should look like this:
+     */
+    console.log('Creating profile with data:', profile);
+
     const result = await profilesApi.createProfile(profile);
     const dateNow = new Date();
     const timezoneOffset = -240; // For Eastern Daylight Time (EDT)
@@ -43,10 +50,15 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
                         consent: 'SUBSCRIBED',
                         consentedAt: new Date(
                           formatConsentedAt(dateNow, timezoneOffset),
-                        ), // Convert string to Date object
+                        ),
                       },
                     },
-                    // Add more subscription types here if needed
+                    /**
+                     *
+                     * Add more subscription types here if needed.
+                     *
+                     * Example: SMS, Push, etc.
+                     */
                   },
                 },
               },
@@ -57,36 +69,20 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
           list: {
             data: {
               type: 'list',
-              id: listId, // Use the predefined list ID
+              id: LIST_ID,
             },
           },
         },
       },
     });
+    /**
+     * The subscription result should look like this:
+     */
+    console.log('Subscription result:', subscribeResult);
+
     return { success: true, data: subscribeResult.body };
   } catch (error) {
     console.error('Failed to subscribe:', error.response?.status);
     throw new Error(`Failed to subscribe: ${error.message}`);
   }
 }
-
-function formatConsentedAt(date: Date, timezoneOffset: number): string {
-  // Calculate timezone offset
-  let offsetHours = Math.abs(Math.floor(timezoneOffset / 60));
-  let offsetMinutes = Math.abs(timezoneOffset % 60);
-  let offsetSign = timezoneOffset < 0 ? '-' : '+';
-  let offset = `${offsetSign}${offsetHours.toString().padStart(2, '0')}${offsetMinutes.toString().padStart(2, '0')}`;
-
-  // Format the date and time parts
-  let year = date.getFullYear();
-  let month = (date.getMonth() + 1).toString().padStart(2, '0');
-  let day = date.getDate().toString().padStart(2, '0');
-  let hours = date.getHours().toString().padStart(2, '0');
-  let minutes = date.getMinutes().toString().padStart(2, '0');
-  let seconds = date.getSeconds().toString().padStart(2, '0');
-
-  // Combine all parts into the final string
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${offset}`;
-}
-
-export default subscribeToKlaviyo;

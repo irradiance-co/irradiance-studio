@@ -5,9 +5,9 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Sanity Next.js Portfolio Site',
+  title: 'Irradiance',
   metadataBase: new URL('https://irradiance.vercel.app'),
-  description: 'A personal portfolio site built with Sanity and Next.js',
+  description: '',
 };
 
 export default function RootLayout({
