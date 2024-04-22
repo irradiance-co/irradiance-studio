@@ -17,7 +17,7 @@ interface SubscribeParams {
 export async function subscribeToKlaviyo({ email }: SubscribeParams) {
   console.log('Starting subscription process for:', email);
 
-  let profile: ProfileCreateQuery = {
+  const profile: ProfileCreateQuery = {
     data: {
       type: ProfileEnum.Profile,
       attributes: {
@@ -27,42 +27,33 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
   };
 
   try {
-    /**
-     * The profile object should look like this:
-     */
     console.log('Creating profile with data:', profile);
 
+    // Create the profile and prepare for subscription
     const result = await profilesApi.createProfile(profile);
     const dateNow = new Date();
     const timezoneOffset = -240; // For Eastern Daylight Time (EDT)
 
-    const subscribeResult = await profilesApi.subscribeProfiles({
+    // Prepare the subscription data
+    const subscribeData: SubscriptionCreateJobCreateQuery = {
       data: {
         type: ProfileSubscriptionBulkCreateJobEnum.ProfileSubscriptionBulkCreateJob,
         attributes: {
-          customSource: 'WEB_FORM', // Customize this as needed
+          customSource: 'WEB_FORM',
           profiles: {
             data: [
               {
                 type: 'profile',
-                id: result.body.data.id, // Ensure this path is correct based on the actual API response
+                id: result.body.data.id,
                 attributes: {
                   email: email,
                   subscriptions: {
                     email: {
                       marketing: {
                         consent: 'SUBSCRIBED',
-                        consentedAt: new Date(
-                          formatConsentedAt(dateNow, timezoneOffset),
-                        ),
+                        consentedAt: formatConsentedAt(dateNow, timezoneOffset),
                       },
                     },
-                    /**
-                     *
-                     * Add more subscription types here if needed.
-                     *
-                     * Example: SMS, Push, etc.
-                     */
                   },
                 },
               },
@@ -78,10 +69,10 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
           },
         },
       },
-    });
-    /**
-     * The subscription result should look like this:
-     */
+    };
+
+    // Execute the subscription
+    const subscribeResult = await profilesApi.subscribeProfiles(subscribeData);
     console.log('Subscription result:', subscribeResult);
 
     return { success: true, data: subscribeResult.body };
@@ -90,11 +81,3 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
     throw new Error(`Failed to subscribe: ${error.message}`);
   }
 }
-
-// app/actions/subscribe.ts
-
-/**
- * The subscribeToKlaviyo function is responsible for creating a new profile and subscribing it to a predefined list.
- * The function accepts an email address as a parameter and returns a success message if the subscription process is successful.
- *
- */
