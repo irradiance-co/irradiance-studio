@@ -2,7 +2,11 @@
 'use server';
 
 import { profilesApi, formatConsentedAt } from '@/lib/klaviyo';
-import { ProfileCreateQuery, ProfileEnum } from 'klaviyo-api';
+import {
+  ProfileCreateQuery,
+  ProfileEnum,
+  ProfileSubscriptionBulkCreateJobEnum,
+} from 'klaviyo-api';
 
 const LIST_ID = 'RGUBug'; // Predefined list ID
 
@@ -34,9 +38,9 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
 
     const subscribeResult = await profilesApi.subscribeProfiles({
       data: {
-        type: 'profile-subscription-bulk-create-job',
+        type: ProfileSubscriptionBulkCreateJobEnum.ProfileSubscriptionBulkCreateJob,
         attributes: {
-          customSource: 'YourCustomSourceHere', // Customize this as needed
+          customSource: 'WEB_FORM', // Customize this as needed
           profiles: {
             data: [
               {
