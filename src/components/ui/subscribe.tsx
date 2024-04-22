@@ -16,11 +16,13 @@ import { KlaviyoSubscribe } from './react-form';
 export const Subscribe = () => {
   return (
     <Drawer>
-      <DrawerTrigger>Sign up</DrawerTrigger>
+      <DrawerTrigger className='fixed bottom-0 py-12 font-medium text-gray-800'>
+        <span className='font-semibold underline'>Sign up</span> to be notified
+        of updates.
+      </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle className='text-center'>Stay Updated!</DrawerTitle>
-          <DrawerDescription className='text-center'>
+          <DrawerDescription className='mb-4 text-center font-medium text-gray-600'>
             Sign up to be notified of updates.
           </DrawerDescription>
         </DrawerHeader>

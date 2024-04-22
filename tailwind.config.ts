@@ -32,6 +32,21 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+
+      animation: {
+        'blur-animation': 'blurAnimation 0.3s ease-in-out forwards',
+      },
+
+      keyframes: {
+        blurAnimation: {
+          from: {
+            backdropFilter: 'blur(0)',
+          },
+          to: {
+            backdropFilter: 'blur(8px)',
+          },
+        },
+      },
     },
   },
   plugins: [],

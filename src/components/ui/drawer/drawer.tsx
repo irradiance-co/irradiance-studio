@@ -29,7 +29,10 @@ const DrawerOverlay = React.forwardRef<
   <DrawerPrimitive.Overlay
     ref={ref}
     className={cn(
-      'fixed inset-0 z-50 bg-black/80 backdrop-blur-sm backdrop-filter',
+      'fixed inset-0 z-50 bg-white/60',
+      'duration-400 transition-opacity ease-in-out',
+      'data-[state=closed]:bg-transparent data-[state=open]:bg-white/60',
+      'data-[state=open]:animate-blur-animation data-[state=closed]:opacity-0',
       className,
     )}
     {...props}
@@ -46,11 +49,11 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed inset-x-0 bottom-0 z-50 my-24 flex h-auto flex-col rounded-t-[14px] py-24',
+        'fixed inset-x-0 bottom-0 z-50 my-8 flex h-auto flex-col bg-white pt-8 shadow-md',
         className,
       )}
       {...props}>
-      <div className='mx-auto mt-4 h-2 w-[100px] rounded-full' />
+      <div className='mx-auto mb-8 mt-4 h-2 w-[100px] rounded-full bg-black' />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>

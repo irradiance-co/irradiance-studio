@@ -3,6 +3,8 @@
 import React from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
+import { cn } from '@/lib/utils';
+
 interface TextInputProps extends UseFormRegisterReturn {
   placeholder?: string;
 }
@@ -32,7 +34,12 @@ const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
         onBlur={onBlur}
         placeholder={placeholder}
         {...rest}
-        className='mx-auto block w-full max-w-sm items-center justify-center border-b border-radiance-400 bg-transparent p-2.5 text-sm text-white focus:border-blue-500 focus:ring-blue-500'
+        className={cn(
+          'max-w-3/4 mx-auto w-full appearance-none',
+          'items-center justify-center border-none',
+          'bg-transparent px-2 py-2.5 text-sm text-gray-300',
+          'focus:border-blue-500 focus:ring-blue-500',
+        )}
       />
     );
   },

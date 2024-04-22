@@ -10,6 +10,8 @@ import { subscribeToKlaviyo } from '@/app/actions/subscribe';
 import { FormField, FormItem, FormControl, FormMessage } from './form';
 import { InputField } from '../input';
 
+import { cn } from '@/lib/utils';
+
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
 });
@@ -47,29 +49,35 @@ const KlaviyoSubscribe = () => {
   return (
     <FormProvider {...methods}>
       <FormPrimitive
+        onSubmit={onSubmit}
         action={(formData: FormData) =>
           subscribeToKlaviyo({ email: formData.get('email') as string })
-        }
-        onSubmit={onSubmit}>
-        <FormItem>
-          <FormField
-            name='email'
-            render={({ field }) => (
-              <FormControl {...field}>
-                <InputField
-                  {...methods.register('email')}
-                  placeholder='Enter your email'
-                />
-              </FormControl>
-            )}
-          />
-          <FormMessage />
-        </FormItem>
-        <button
-          className='mx-auto mt-4 flex w-full items-center justify-center'
-          type='submit'>
-          Submit
-        </button>
+        }>
+        <div
+          className={cn(
+            'mx-auto flex w-full max-w-sm items-center justify-between',
+            'mb-6 gap-2 border-b border-radiance-400 py-2',
+          )}>
+          <FormItem>
+            <FormField
+              name='email'
+              render={({ field }) => (
+                <FormControl {...field}>
+                  <InputField
+                    {...methods.register('email')}
+                    placeholder='Enter your email'
+                  />
+                </FormControl>
+              )}
+            />
+            <FormMessage />
+          </FormItem>
+          <button
+            className='mx-0 flex h-auto w-1/4 items-center justify-end px-2 text-right text-sm font-medium text-gray-800'
+            type='submit'>
+            Submit
+          </button>
+        </div>
       </FormPrimitive>
     </FormProvider>
   );
