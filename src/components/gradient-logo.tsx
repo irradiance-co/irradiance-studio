@@ -2,7 +2,7 @@ import React from 'react';
 import type { SVGProps } from '@/lib/svg';
 
 const color1 = '#F4F5F8';
-const color2 = '#FFFFFF';
+const color2 = '#687785';
 
 export const GradientLogo = ({
   color = 'currentColor',

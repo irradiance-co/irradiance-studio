@@ -12,6 +12,7 @@ import {
   DrawerDescription,
 } from './drawer';
 import { KlaviyoSubscribe } from './react-form';
+import { Button } from './button';
 
 export const Subscribe = () => {
   return (
@@ -28,7 +29,7 @@ export const Subscribe = () => {
         </DrawerHeader>
         <KlaviyoSubscribe />
         <DrawerFooter>
-          <DrawerClose>Cancel</DrawerClose>
+          <DrawerClose>Close</DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

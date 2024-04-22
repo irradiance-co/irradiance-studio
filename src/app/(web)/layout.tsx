@@ -1,3 +1,4 @@
+import { GradientXV } from '@/components/gradients';
 import '../index.scss';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -18,9 +19,14 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${inter.className}`}>
-        <main className='flex min-h-screen flex-col items-center justify-between overflow-hidden'>
-          {children}
-        </main>
+        <GradientXV
+          gradient={
+            'radial-gradient(125% 125% at 50% 10%, transparent 40%, #ED1C24 100%)'
+          }>
+          <main className='z-10 flex flex-col items-center justify-center overflow-hidden'>
+            {children}
+          </main>
+        </GradientXV>
       </body>
     </html>
   );

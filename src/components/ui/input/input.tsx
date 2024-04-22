@@ -13,6 +13,8 @@ const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
   ({ onBlur, onChange, name, ref, placeholder, ...rest }, forwardedRef) => {
     return (
       <input
+        autoCorrect='off'
+        autoComplete='off'
         type='email'
         name={name}
         ref={(instance) => {
@@ -38,7 +40,8 @@ const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
           'max-w-3/4 mx-auto w-full appearance-none',
           'items-center justify-center border-none',
           'bg-transparent px-2 py-2.5 text-sm text-gray-300',
-          'focus:border-blue-500 focus:ring-blue-500',
+          'transition-colors duration-300',
+          'focus:outline-none',
         )}
       />
     );

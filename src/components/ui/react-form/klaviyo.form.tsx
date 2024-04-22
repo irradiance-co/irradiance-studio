@@ -11,6 +11,7 @@ import { FormField, FormItem, FormControl, FormMessage } from './form';
 import { InputField } from '../input';
 
 import { cn } from '@/lib/utils';
+import { Button } from '../button';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -23,6 +24,7 @@ const FormPrimitive: React.FC<React.FormHTMLAttributes<HTMLFormElement>> = ({
 }) => {
   return (
     <form
+      className='w-full px-4 md:px-0'
       onSubmit={onSubmit}
       {...props}>
       {children}
@@ -56,7 +58,8 @@ const KlaviyoSubscribe = () => {
         <div
           className={cn(
             'mx-auto flex w-full max-w-sm items-center justify-between',
-            'mb-6 gap-2 border-b border-radiance-400 py-2',
+            'mb-6 gap-2 border-b-[2px] border-radiance-400 py-2',
+            'px-0',
           )}>
           <FormItem>
             <FormField
@@ -72,11 +75,13 @@ const KlaviyoSubscribe = () => {
             />
             <FormMessage />
           </FormItem>
-          <button
-            className='mx-0 flex h-auto w-1/4 items-center justify-end px-2 text-right text-sm font-medium text-gray-800'
+          <Button
+            className='mx-0 flex h-full w-1/4 items-center justify-end py-2 text-sm font-medium'
+            variant='signUpNow'
+            size='sm'
             type='submit'>
             Submit
-          </button>
+          </Button>
         </div>
       </FormPrimitive>
     </FormProvider>
