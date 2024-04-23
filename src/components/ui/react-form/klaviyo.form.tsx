@@ -5,7 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import { subscribeToKlaviyo } from '@/app/actions/subscribe';
+import { subscribeToKlaviyo } from '@/app/actions/sample';
 
 import { FormField, FormItem, FormControl, FormMessage } from './form';
 import { InputField } from '../input';

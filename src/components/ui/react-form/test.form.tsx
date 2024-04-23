@@ -1,11 +1,12 @@
-// KlaviyoSubscribe.tsx
+'use client';
+
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useUser } from './klaviyo.context'; // Import the useUser hook
 
-import { subscribeToKlaviyo } from '@/app/actions/subscribe';
+import { subscribeToKlaviyo } from '@/app/actions/sample';
 import { FormField, FormItem, FormControl, FormMessage } from './form';
 import { InputField } from '../input';
 import { Button } from '../button';
