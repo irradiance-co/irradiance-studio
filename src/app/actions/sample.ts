@@ -51,7 +51,9 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
                     email: {
                       marketing: {
                         consent: 'SUBSCRIBED',
-                        consentedAt: formatConsentedAt(dateNow, timezoneOffset),
+                        consentedAt: new Date(
+                          formatConsentedAt(dateNow, timezoneOffset),
+                        ),
                       },
                     },
                   },

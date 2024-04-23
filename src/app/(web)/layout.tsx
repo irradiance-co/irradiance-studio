@@ -3,6 +3,8 @@ import '../index.scss';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { AppHooks } from './hooks';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${inter.className}`}>
+        <AppHooks />
         <GradientXV
           gradient={
             'radial-gradient(125% 125% at 50% 10%, transparent 40%, #ED1C24 100%)'

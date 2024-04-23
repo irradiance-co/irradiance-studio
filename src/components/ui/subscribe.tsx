@@ -8,11 +8,9 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerFooter,
-  DrawerTitle,
   DrawerDescription,
 } from './drawer';
 import { KlaviyoSubscribe } from './react-form';
-import { Button } from './button';
 
 export const Subscribe = () => {
   return (
