@@ -1,9 +1,9 @@
-'use client';
-
+// KlaviyoSubscribe.tsx
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useUser } from './klaviyo.context'; // Import the useUser hook
 
 import { subscribeToKlaviyo } from '@/app/actions/subscribe';
 import { FormField, FormItem, FormControl, FormMessage } from './form';
@@ -20,15 +20,17 @@ const KlaviyoSubscribe = () => {
     resolver: zodResolver(formSchema),
     defaultValues: { email: '' },
   });
+  const { setEmail } = useUser();
 
   const onSubmit = methods.handleSubmit(async (data) => {
     try {
       const response = await subscribeToKlaviyo({ email: data.email });
-      alert('Subscription successful!');
-      methods.reset({ email: '' });
+      if (response.success) {
+        setEmail(data.email); // Update global email state on successful subscription
+        console.log('Subscription successful:', response);
+      }
     } catch (error) {
       console.error('Subscription failed:', error);
-      alert('Failed to subscribe. Please try again.');
     }
   });
 

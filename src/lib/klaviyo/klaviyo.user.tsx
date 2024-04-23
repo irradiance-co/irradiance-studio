@@ -1,18 +1,33 @@
-// Context.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { subscribeToKlaviyo } from '@/app/actions/sample';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 
-const UserContext = createContext(null);
+import { subscribeToKlaviyo } from '@/app/actions/subscribe';
 
-export const UserProvider = ({ children }) => {
+interface UserContextType {
+  email: string;
+  setEmail: (email: string) => void;
+}
+
+const UserContext = createContext<UserContextType | undefined>(undefined);
+
+interface UserProviderProps {
+  children: ReactNode;
+}
+
+export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [email, setEmail] = useState('');
 
   useEffect(() => {
     async function fetchAndSubscribeEmail() {
       try {
         // Assuming you have a user's email at hand or fetched from somewhere
-        const userEmail = null; // Replace with actual email fetch logic
-        const result = await subscribeToKlaviyo({ email: userEmail });
+        const userEmail = null;
+        const result = await subscribeToKlaviyo({ email: null });
         if (result.success) {
           setEmail(userEmail);
         }
@@ -25,8 +40,16 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ email }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ email, setEmail }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
-export const useUser = () => useContext(UserContext);
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
+};

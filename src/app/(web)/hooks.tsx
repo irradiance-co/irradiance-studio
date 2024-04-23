@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react';
 
 import { klaviyoCompanyId } from '@/lib/env.api';
-import { KlaviyoTracking } from '@/lib/klaviyo/klaviyo.track';
+import { KlaviyoTracking } from '@/components/ui/react-form/klaviyo.track';
 
 export const AppHooks = () => {
   return (
