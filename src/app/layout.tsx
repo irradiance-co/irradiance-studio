@@ -1,5 +1,5 @@
 import { GradientXV } from '@/components/gradients';
-import '../index.scss';
+import './index.scss';
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 
