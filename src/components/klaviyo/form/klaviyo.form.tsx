@@ -1,16 +1,10 @@
-'use client';
-
 import React from 'react';
 import { useForm, FormProvider, UseFormRegisterReturn } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-
-// ..action..
 import { subscribeAction } from '@/app/actions';
 import { cn } from '@/lib/utils';
-import { useUser } from '../provider';
-
-// ..ui..
+import { useUserStore } from '@/lib/use-store';
 import { Button } from '@/components/ui/button';
 import {
   FormField,
@@ -28,28 +22,26 @@ interface TextInputProps extends UseFormRegisterReturn {
 }
 
 const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
-  ({ onBlur, onChange, name, placeholder, ...rest }, ref) => {
-    return (
-      <input
-        autoCorrect='off'
-        autoComplete='email'
-        type='email'
-        name={name}
-        ref={ref}
-        onChange={onChange}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        {...rest}
-        className={cn(
-          'max-w-3/4 mx-auto w-full appearance-none',
-          'items-center justify-center border-none',
-          'bg-transparent px-2 py-2.5 text-sm text-gray-300',
-          'transition-colors duration-300',
-          'focus:outline-none',
-        )}
-      />
-    );
-  },
+  ({ onBlur, onChange, name, placeholder, ref, ...rest }, forwardedRef) => (
+    <input
+      autoCorrect='off'
+      autoComplete='email'
+      type='email'
+      name={name}
+      ref={ref} // Directly use ref from useForm
+      onChange={onChange}
+      onBlur={onBlur}
+      placeholder={placeholder}
+      {...rest}
+      className={cn(
+        'max-w-3/4 mx-auto w-full appearance-none',
+        'items-center justify-center border-none',
+        'bg-transparent px-2 py-2.5 text-sm text-gray-300',
+        'transition-colors duration-300',
+        'focus:outline-none',
+      )}
+    />
+  ),
 );
 
 InputField.displayName = 'InputField';
@@ -59,7 +51,7 @@ export const KlaviyoForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: { email: '' },
   });
-  const { setEmail } = useUser();
+  const setEmail = useUserStore((state) => state.setEmail);
 
   const onSubmit = methods.handleSubmit(async (data) => {
     try {

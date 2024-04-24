@@ -4,7 +4,7 @@ const cspHeader = `
     style-src 'self' 'unsafe-inline' *.klaviyo.com *.sanity.io;
     img-src 'self' blob: data: *.klaviyo.com *.sanity.io;
     font-src 'self';
-    object-src 'none' klaviyo.com *.klaviyo.com;
+    object-src 'none';
     base-uri 'self';
     form-action 'self' klaviyo.com *.klaviyo.com;
     frame-ancestors 'none';

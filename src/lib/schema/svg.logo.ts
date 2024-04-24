@@ -10,7 +10,7 @@ export const svgLogo = defineType({
       title: 'SVG Image',
       type: 'image',
       options: {
-        accept: '.svg', // Restricts file uploads to SVG files
+        accept: '.svg',
       },
       validation: (Rule: any) =>
         Rule.required().error('A SVG logo image is required.'),
