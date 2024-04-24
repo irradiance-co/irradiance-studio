@@ -10,12 +10,6 @@ const cspHeader = `
 const config = {
   images: { remotePatterns: [{ hostname: 'cdn.sanity.io' }] },
 
-  experimental: {
-    serverActions: {
-      allowedOrigins: ['*.sanity.io', 'klaviyo.com', '*.klaviyo.com'],
-    },
-  },
-
   async headers() {
     return [
       {

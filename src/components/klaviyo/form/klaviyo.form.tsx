@@ -59,11 +59,20 @@ export const KlaviyoForm = () => {
     try {
       const response = await subscribeAction({ email: data.email });
       if (response.success) {
-        setEmail(data.email); // Update global email state on successful subscription
+        setEmail(data.email); // Only update state on successful subscription
         console.log('Subscription successful:', response);
+      } else {
+        // Since 'success' is false, it implies an error occurred
+        // We can assume an error occurred without specific details
+        throw new Error('Subscription failed due to server-side issues');
       }
     } catch (error) {
       console.error('Subscription failed:', error);
+      // Set error in form state for user feedback
+      methods.setError('email', {
+        type: 'manual',
+        message: error.message || 'Failed to subscribe',
+      });
     }
   });
 
@@ -94,7 +103,8 @@ export const KlaviyoForm = () => {
             className='mx-0 flex h-full w-1/4 items-center justify-end py-2 text-sm font-medium'
             variant='signUpNow'
             size='sm'
-            type='submit'>
+            type='submit'
+            disabled={methods.formState.isSubmitting}>
             Submit
           </Button>
         </div>

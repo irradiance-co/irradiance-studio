@@ -12,6 +12,7 @@ const LIST_ID = 'RGUBug';
 
 interface SubscribeParams {
   email: string;
+  message?: string;
 }
 
 export async function subscribeAction({ email }: SubscribeParams) {
