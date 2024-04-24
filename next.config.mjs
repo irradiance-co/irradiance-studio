@@ -1,14 +1,9 @@
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.klaviyo.com *.sanity.io klaviyo.com;
-    style-src 'self' 'unsafe-inline' *.klaviyo.com *.sanity.io;
+    style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: *.klaviyo.com *.sanity.io;
     font-src 'self';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self' klaviyo.com *.klaviyo.com;
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
 `;
 
 /** @type {import('next').NextConfig} */
@@ -29,18 +24,6 @@ const config = {
           {
             key: 'Content-Security-Policy',
             value: cspHeader.replace(/\n/g, ''),
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
           },
           {
             key: 'Referrer-Policy',
