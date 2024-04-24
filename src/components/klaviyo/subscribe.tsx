@@ -9,10 +9,10 @@ import {
   DrawerHeader,
   DrawerFooter,
   DrawerDescription,
-} from './drawer';
-import { KlaviyoSubscribe } from './react-form';
+} from '@/components/ui/drawer';
+import { KlaviyoForm } from './form';
 
-export const Subscribe = () => {
+export const KlaviyoSubscribe = () => {
   return (
     <Drawer>
       <DrawerTrigger className='fixed bottom-0 py-12 font-medium text-gray-800'>
@@ -25,7 +25,7 @@ export const Subscribe = () => {
             Sign up to be notified of updates.
           </DrawerDescription>
         </DrawerHeader>
-        <KlaviyoSubscribe />
+        <KlaviyoForm />
         <DrawerFooter>
           <DrawerClose>Close</DrawerClose>
         </DrawerFooter>

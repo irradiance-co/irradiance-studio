@@ -19,7 +19,7 @@
     "@sanity/vision": "^3.38.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "klaviyo-api": "8.0.0",
+    "klaviyo-api": "^8.0.2",
     "next": "^14.2.2",
     "next-sanity": "^9.0.6",
     "node-fetch": "^3.3.2",

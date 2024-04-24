@@ -1,4 +1,4 @@
-const formatConsentedAt = (date: Date, timezoneOffset: number): string => {
+const formatConsentedTime = (date: Date, timezoneOffset: number): string => {
   // Calculate timezone offset
   const offsetHours = Math.abs(Math.floor(timezoneOffset / 60));
   const offsetMinutes = Math.abs(timezoneOffset % 60);
@@ -16,4 +16,4 @@ const formatConsentedAt = (date: Date, timezoneOffset: number): string => {
   return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}${offset}`;
 };
 
-export { formatConsentedAt };
+export { formatConsentedTime };

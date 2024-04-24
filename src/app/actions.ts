@@ -1,6 +1,6 @@
 'use server';
 
-import { profilesApi, formatConsentedAt } from '@/lib/klaviyo';
+import { profilesApi, formatConsentedTime } from '@/lib/klaviyo';
 import {
   ProfileCreateQuery,
   ProfileEnum,
@@ -14,7 +14,7 @@ interface SubscribeParams {
   email: string;
 }
 
-export async function subscribeToKlaviyo({ email }: SubscribeParams) {
+export async function subscribeAction({ email }: SubscribeParams) {
   console.log('Starting subscription process for:', email);
 
   const profile: ProfileCreateQuery = {
@@ -29,12 +29,19 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
   try {
     console.log('Creating profile with data:', profile);
 
-    // Create the profile and prepare for subscription
+    /**
+     *
+     * Create the profile and prepare for subscription
+     * to a Klaviyo list.
+     */
     const result = await profilesApi.createProfile(profile);
     const dateNow = new Date();
-    const timezoneOffset = -240; // For Eastern Daylight Time (EDT)
+    const timezoneOffset = -240;
 
-    // Prepare the subscription data
+    /**
+     *
+     * Prepare the subscription data
+     */
     const subscribeData: SubscriptionCreateJobCreateQuery = {
       data: {
         type: ProfileSubscriptionBulkCreateJobEnum.ProfileSubscriptionBulkCreateJob,
@@ -52,7 +59,7 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
                       marketing: {
                         consent: 'SUBSCRIBED',
                         consentedAt: new Date(
-                          formatConsentedAt(dateNow, timezoneOffset),
+                          formatConsentedTime(dateNow, timezoneOffset),
                         ),
                       },
                     },
@@ -73,10 +80,8 @@ export async function subscribeToKlaviyo({ email }: SubscribeParams) {
       },
     };
 
-    // Execute the subscription
     const subscribeResult = await profilesApi.subscribeProfiles(subscribeData);
     console.log('Subscription result:', subscribeResult);
-
     return { success: true, data: subscribeResult.body };
   } catch (error) {
     console.error('Failed to subscribe:', error.response?.status);

@@ -1,3 +1,3 @@
 export { default as profilesApi } from './klaviyo.api';
 
-export { formatConsentedAt } from './klaviyo.utils';
+export { formatConsentedTime } from './klaviyo.utils';

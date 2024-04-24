@@ -5,11 +5,19 @@ import { useForm, FormProvider, UseFormRegisterReturn } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
+// ..action..
 import { subscribeAction } from '@/app/actions';
 import { cn } from '@/lib/utils';
-import { useUser } from '@/components/ui/react-form/klaviyo.context';
+import { useUser } from '../provider';
+
+// ..ui..
 import { Button } from '@/components/ui/button';
-import { FormField, FormItem, FormControl, FormMessage } from './form';
+import {
+  FormField,
+  FormItem,
+  FormControl,
+  FormMessage,
+} from '@/components/ui/react-form/form';
 
 const formSchema = z.object({
   email: z.string().email({ message: 'Invalid email address.' }),
@@ -46,7 +54,7 @@ const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
 
 InputField.displayName = 'InputField';
 
-const KlaviyoSubscribe = () => {
+export const KlaviyoForm = () => {
   const methods = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: { email: '' },
@@ -100,5 +108,3 @@ const KlaviyoSubscribe = () => {
     </FormProvider>
   );
 };
-
-export { KlaviyoSubscribe };

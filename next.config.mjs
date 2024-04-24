@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const config = {
   images: { remotePatterns: [{ hostname: 'cdn.sanity.io' }] },
-}
 
-export default config
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['*.sanity.io', 'klaviyo.com', '*.klaviyo.com'],
+    },
+  },
+};
+
+export default config;

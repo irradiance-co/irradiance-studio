@@ -7065,7 +7065,7 @@ __metadata:
     clsx: ^2.1.0
     eslint: ^9.0.0
     eslint-config-next: ^14.2.2
-    klaviyo-api: 8.0.0
+    klaviyo-api: ^8.0.2
     next: ^14.2.2
     next-sanity: ^9.0.6
     node-fetch: ^3.3.2
@@ -7761,14 +7761,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"klaviyo-api@npm:8.0.0":
-  version: 8.0.0
-  resolution: "klaviyo-api@npm:8.0.0"
+"klaviyo-api@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "klaviyo-api@npm:8.0.2"
   dependencies:
     axios: ^1.4.0
     exponential-backoff: ^3.1.1
     form-data: ^4.0.0
-  checksum: 0b78133b14874c9f20b34b512f8b09831bfa96fd0def606f36596f6802ae4299981d48232564eaa48b648a4bce2fd09b31185cef21370e7555bdf0dbad34de64
+  checksum: 67661e90bd82af74aba5edb22645ac8f5874fc30cb17f27c4545d1d56f2e21a61c24b093b25c29e814d0d6c65cf936c975bd6c30cdaabb1b85508ed6ac319a0e
   languageName: node
   linkType: hard
 
