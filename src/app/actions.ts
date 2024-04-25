@@ -1,6 +1,6 @@
 'use server';
 
-import { profilesApi, formatConsentedTime } from '@/lib/klaviyo';
+import { profilesApi } from '@/lib/klaviyo';
 import {
   ProfileCreateQuery,
   ProfileEnum,
@@ -8,7 +8,20 @@ import {
   ProfileSubscriptionBulkCreateJobEnum,
 } from 'klaviyo-api';
 
-const LIST_ID = 'RGUBug';
+const LIST_ID = process.env.KLAVIYO_LIST_ID;
+
+const formatConsentedTime = (date: Date): string => {
+  date = new Date(date.getTime() - date.getTimezoneOffset() * 60000); // Convert local time to UTC
+  const year = date.getUTCFullYear();
+  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = date.getUTCDate().toString().padStart(2, '0');
+  const hours = date.getUTCHours().toString().padStart(2, '0');
+  const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+  const seconds = date.getUTCSeconds().toString().padStart(2, '0');
+  const milliseconds = date.getUTCMilliseconds().toString().padStart(3, '0');
+
+  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}Z`;
+};
 
 interface SubscribeParams {
   email: string;
@@ -60,8 +73,8 @@ export async function subscribeAction({ email }: SubscribeParams) {
                       marketing: {
                         consent: 'SUBSCRIBED',
                         consentedAt: new Date(
-                          formatConsentedTime(dateNow, timezoneOffset),
-                        ),
+                          formatConsentedTime(dateNow),
+                        ) as any,
                       },
                     },
                   },
