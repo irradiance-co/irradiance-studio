@@ -33,9 +33,9 @@ const downloadClasslist = [
 ];
 
 const signUpClasslist = [
-  'text-grey-500 rounded-md shadow',
+  'text-carbon-500 rounded-md shadow',
   'hover:text-radiance-600 active:shadow-inner',
-  'gap-2',
+  'gap-2 bg-white',
 ];
 
 /**

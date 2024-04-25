@@ -16,14 +16,10 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${inter.className}`}>
         <AppHooks />
-        <GradientXV
-          gradient={
-            'radial-gradient(125% 125% at 50% 10%, transparent 40%, #ED1C24 100%)'
-          }>
-          <main className='z-10 flex flex-col items-center justify-center overflow-hidden'>
-            {children}
-          </main>
-        </GradientXV>
+        <main className='z-10 flex flex-col items-center justify-center overflow-hidden'>
+          {children}
+        </main>
+        <GradientXV gradient='radial-gradient(125% 125% at 50% 10%, #FFF 0%, #EAEBEB 100%)' />
       </body>
     </html>
   );

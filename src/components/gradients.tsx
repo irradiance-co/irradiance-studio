@@ -3,17 +3,15 @@ import { cn } from '@/lib/utils';
 
 type GradientProps = {
   gradient: string;
-  children: React.ReactNode;
   className?: string;
 };
 
 export const GradientXV = ({
-  children,
   gradient = 'radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%)',
   className,
 }: GradientProps) => {
   const combinedClassName = cn(
-    'absolute inset-0 z-0',
+    'fixed top-0 bottom-0 inset-0 z-0',
     'h-full w-full items-center',
     className,
   );
@@ -25,9 +23,7 @@ export const GradientXV = ({
   return (
     <div
       className={combinedClassName}
-      style={style}>
-      {children}
-    </div>
+      style={style}></div>
   );
 };
 

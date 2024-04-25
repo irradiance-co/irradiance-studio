@@ -98,7 +98,7 @@ export const KlaviyoForm = () => {
           />
           <FormMessage />
           <Button
-            className='mx-0 flex h-full w-1/4 items-center justify-end py-2 text-sm font-medium'
+            className='mx-auto flex h-full w-1/4 items-center justify-end py-2 text-sm font-medium'
             variant='signUpNow'
             size='sm'
             type='submit'
