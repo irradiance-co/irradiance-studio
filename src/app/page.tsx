@@ -12,17 +12,22 @@ const HormesisHover = () => {
     <div className='flex flex-row gap-2 text-center text-4xl font-semibold text-carbon-600'>
       <HoverCard>
         <HoverCardTrigger>
-          <span className='underline hover:cursor-wait'>Hormesis</span>
+          <span className='tracking-tight underline hover:cursor-progress'>
+            Hormesis
+          </span>
         </HoverCardTrigger>
         <HoverCardContent>
-          <p className='text-left text-sm font-medium'>
-            <strong>Hormesis:</strong> an adaptive response of cells to a
-            moderate, intermittent stressor.
-          </p>
+          <div className='flex flex-col gap-2'>
+            <h3 className='text-left text-sm font-semibold'>Hormesis</h3>
+            <p className='text-left text-sm font-medium'>
+              an adaptive response of cells to a moderate, intermittent
+              stressor.
+            </p>
+          </div>
         </HoverCardContent>
       </HoverCard>
 
-      <h3 className=''>in motion</h3>
+      <h3 className='tracking-tight'>in motion.</h3>
     </div>
   );
 };

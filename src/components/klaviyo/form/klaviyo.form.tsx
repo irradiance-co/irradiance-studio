@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { subscribeAction } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
+import { Toaster, toast } from 'sonner';
 import {
   FormField,
   FormItem,
@@ -39,7 +39,7 @@ const InputField = React.forwardRef<HTMLInputElement, TextInputProps>(
         className={cn(
           'max-w-3/4 mx-auto w-full appearance-none',
           'items-center justify-center border-none',
-          'bg-transparent px-2 py-2.5 text-sm text-gray-300',
+          'bg-transparent px-2 py-2.5 text-sm text-carbon-600',
           'transition-colors duration-300',
           'focus:outline-none',
         )}
@@ -64,9 +64,7 @@ export const KlaviyoForm = () => {
       if (response.success) {
         console.log('Subscription successful:', response);
 
-        toast.success('Subscription successful', {
-          position: 'top-center',
-        });
+        toast.success('Subscription successful');
       } else {
         throw new Error('Subscription failed due to server-side issues');
       }
@@ -80,38 +78,41 @@ export const KlaviyoForm = () => {
   });
 
   return (
-    <FormProvider {...methods}>
-      <form
-        className='w-full px-4 md:px-0'
-        onSubmit={onSubmit}>
-        <div
-          className={cn(
-            'mx-auto mb-6 flex w-full max-w-sm items-center justify-between gap-2 border-b-[2px] border-radiance-400 py-2',
-          )}>
-          <FormField
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormControl {...field}>
-                  <InputField
-                    {...methods.register('email')}
-                    placeholder='Enter your email'
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-          <FormMessage />
-          <Button
-            className='mx-auto flex h-full w-1/4 items-center justify-end py-2 text-sm font-medium'
-            variant='signUpNow'
-            size='sm'
-            type='submit'
-            disabled={methods.formState.isSubmitting}>
-            Submit
-          </Button>
-        </div>
-      </form>
-    </FormProvider>
+    <>
+      <Toaster position='top-center' />
+      <FormProvider {...methods}>
+        <form
+          className='w-full px-4 md:px-0'
+          onSubmit={onSubmit}>
+          <div
+            className={cn(
+              'mx-auto mb-6 flex w-full max-w-sm items-center justify-between gap-2 border-b-[2px] border-radiance-400 py-2',
+            )}>
+            <FormField
+              name='email'
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl {...field}>
+                    <InputField
+                      {...methods.register('email')}
+                      placeholder='Enter your email'
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormMessage />
+            <Button
+              className='mx-auto flex h-full w-1/4 items-center justify-end py-2 text-sm font-medium'
+              variant='signUpNow'
+              size='sm'
+              type='submit'
+              disabled={methods.formState.isSubmitting}>
+              Submit
+            </Button>
+          </div>
+        </form>
+      </FormProvider>
+    </>
   );
 };
