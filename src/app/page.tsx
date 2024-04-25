@@ -9,7 +9,7 @@ import {
 
 const HormesisHover = () => {
   return (
-    <div className='flex flex-row gap-2 text-center text-4xl font-semibold text-carbon-600'>
+    <div className='flex flex-row gap-2 text-center text-2xl font-semibold text-carbon-600 md:text-3xl'>
       <HoverCard>
         <HoverCardTrigger>
           <span className='tracking-tight underline hover:cursor-progress'>
