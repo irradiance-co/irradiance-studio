@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { subscribeAction } from '@/app/actions';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 import {
   FormField,
   FormItem,
@@ -62,6 +63,10 @@ export const KlaviyoForm = () => {
       console.log('API response:', response);
       if (response.success) {
         console.log('Subscription successful:', response);
+
+        toast.success('Subscription successful', {
+          position: 'top-center',
+        });
       } else {
         throw new Error('Subscription failed due to server-side issues');
       }
