@@ -79,7 +79,10 @@ export const KlaviyoForm = () => {
 
   return (
     <>
-      <Toaster position='top-center' />
+      <Toaster
+        richColors
+        position='top-center'
+      />
       <FormProvider {...methods}>
         <form
           className='w-full px-4 md:px-0'
