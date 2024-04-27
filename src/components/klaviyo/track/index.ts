@@ -1,1 +1,1 @@
-export { KlaviyoTracking } from './klaviyo.track';
+export { KlaviyoTracking } from './basic';
