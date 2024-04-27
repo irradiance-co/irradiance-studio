@@ -1,6 +1,6 @@
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.klaviyo.com *.sanity.io klaviyo.com a.klaviyo.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.klaviyo.com *.sanity.io klaviyo.com a.klaviyo.com vercel.com va.vercel-scripts.com *.vercel-scripts.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: *.klaviyo.com *.sanity.io;
     font-src 'self';
