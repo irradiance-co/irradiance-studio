@@ -2,7 +2,7 @@ import './index.scss';
 
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import { GradientXV } from '@/components/gradients';
+// import { GradientXV } from '@/components/gradients';
 
 import { AppHooks } from './hooks';
 
@@ -20,7 +20,6 @@ export default function RootLayout({
         <main className='z-10 flex flex-col items-center justify-center overflow-hidden'>
           {children}
         </main>
-        <GradientXV gradient='radial-gradient(125% 125% at 50% 10%, #FFF 0%, #EAEBEB 100%)' />
       </body>
     </html>
   );
